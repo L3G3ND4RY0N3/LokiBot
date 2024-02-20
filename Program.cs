@@ -1,6 +1,8 @@
 ﻿using DSharpPlus;
 using DSharpPlus.CommandsNext;
+using DSharpPlus.SlashCommands;
 using LokiBot.commands;
+using LokiBot.commands.slashCommands;
 using LokiBot.config;
 using System;
 using System.Threading.Tasks;
@@ -29,7 +31,7 @@ namespace LokiBot
 
             Client.Ready += Client_Ready;
 
-
+            // creation of the Command Config
             var commandsConfig = new CommandsNextConfiguration()
             {
                 StringPrefixes = new string[] { jsonReader.prefix},
@@ -41,7 +43,14 @@ namespace LokiBot
 
             Commands = Client.UseCommandsNext(commandsConfig);
 
-            Commands.RegisterCommands<ping>();
+            // enable slash commands
+            var slashCommandConfig = Client.UseSlashCommands();
+
+            // registering normal commands, TODO find way to do this iteratively
+            Commands.RegisterCommands<Ping>();
+
+            // register slash commands too
+            slashCommandConfig.RegisterCommands<Hello>();
 
             await Client.ConnectAsync();
             await Task.Delay(-1);

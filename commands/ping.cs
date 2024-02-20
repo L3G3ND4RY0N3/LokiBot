@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace LokiBot.commands
 {
-    internal class ping : BaseCommandModule
+    internal class Ping : BaseCommandModule
     {
         [Command("ping")]
-        public async Task Ping(CommandContext ctx)
+        public async Task PingBot(CommandContext ctx)
         {
             await ctx.Channel.SendMessageAsync("Pong!");
         }

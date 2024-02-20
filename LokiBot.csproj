@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="commands\ping.cs" />
+    <Compile Include="commands\slashCommands\hello.cs" />
     <Compile Include="config\JSONReader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
